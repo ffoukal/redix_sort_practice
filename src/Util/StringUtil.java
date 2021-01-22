@@ -5,7 +5,13 @@ import java.util.List;
 
 public class StringUtil {
 
-    //convertir arr int a str
+    /**
+    *   Converts an integer array to
+    *   string list
+    *
+    *   @param int_list integer array
+    *   @return List<String> converted list
+    */
     public static List<String> convertArray(int[] int_list){
         List<String> converted_list = new ArrayList<>();
 
@@ -16,7 +22,14 @@ public class StringUtil {
         return converted_list;
     }
 
-    //Agregar ceros
+    /**
+     * Pad strings with zeros to the left
+     * based in the maximum length of the strings
+     * in the list
+     *
+     * @param str_list string list
+     * @return padded string list
+     */
     public static List<String> padWithZeros(List<String> str_list){
 
         List<String> padded_list = new ArrayList<>();
@@ -31,6 +44,13 @@ public class StringUtil {
         return padded_list;
     }
 
+    /**
+     * Get the maximum length of a
+     * string list
+     *
+     * @param str_list string list
+     * @return maximum length
+     */
     public static int getMaxLengthFromStringList(List<String> str_list){
         int max_length_string = 0;
         for(String str : str_list){

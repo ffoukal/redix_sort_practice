@@ -9,6 +9,11 @@ public class RadixSort {
 
     public static Map<Integer, List<String>> lists_map = new HashMap<>();
 
+    /**
+     * Sort a integer array with Radix algoritmh
+     * @param number_list array of integers
+     * @return sorted list with radix
+     */
     public static List<Integer> sort(int[] number_list){
         //inicializar listas
         for(int i = 0; i < 10; i++){
@@ -36,6 +41,13 @@ public class RadixSort {
         return sorted_list;
     }
 
+    /**
+     * Merges lists in a map in
+     * only one list, and then deletes them
+     *
+     * @param lists_map map of lists
+     * @return merged list
+     */
     private static List<String> mergeAndClearStringLists(Map<Integer, List<String>> lists_map){
         List<String> mergedList = new ArrayList<>();
 
