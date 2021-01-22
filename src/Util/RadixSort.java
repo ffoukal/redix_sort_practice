@@ -7,23 +7,43 @@ import java.util.Map;
 
 public class RadixSort {
 
-    public static Map<Integer, List<String>> list_map = new HashMap<>();
+    public static Map<Integer, List<String>> lists_map = new HashMap<>();
 
-    public static List<Integer> sort(List<Integer> number_list){
+    public static List<Integer> sort(int[] number_list){
         //inicializar listas
         for(int i = 0; i < 10; i++){
-            list_map.put(i, new ArrayList<String>());
+            RadixSort.lists_map.put(i, new ArrayList<String>());
         }
 
-        return new ArrayList<>();
+        //se convierte la lista de int en string y se rellena con ceros
+        List<String> converted_list = StringUtil.convertArray(number_list);
+        List<String> padded_list = StringUtil.padWithZeros(converted_list);
+        List<Integer> sorted_list = new ArrayList<>();
+        System.out.println("reaches here");
+
+        for(int j = StringUtil.getMaxLengthFromStringList(padded_list) - 1; j >= 0 ; j--){
+            for (String s : padded_list){
+                int index = s.charAt(j)-'0'; // '0' es 48 en ASCII y va en aumento ('1' = 49, ...)
+                 lists_map.get(index).add(s);
+            }
+            padded_list = mergeAndClearStringLists(lists_map);
+        }
+
+        for(String s1 : padded_list){
+            sorted_list.add(Integer.valueOf(s1));
+        }
+
+        return sorted_list;
     }
 
-    private static void placeInArray(){
+    private static List<String> mergeAndClearStringLists(Map<Integer, List<String>> lists_map){
+        List<String> mergedList = new ArrayList<>();
 
-    }
-
-    private static List<Integer> mergeArr(){
-        return new ArrayList<>();
+        for(Map.Entry<Integer, List<String>> entry : lists_map.entrySet()){
+            mergedList.addAll(entry.getValue());
+            entry.getValue().clear();
+        }
+        return mergedList;
     }
 
 }
